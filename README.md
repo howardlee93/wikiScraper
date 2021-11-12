@@ -2,5 +2,5 @@ Uses Puppeteer to scrape wikipedia for article and grabs the article's infobox i
 
 Usage: must enter search term with underscores
 
-​	example: search 'CS Lewis as C._S._Lewis '
+​	example: search 'CS Lewis' as 'C._S._Lewis '
 
