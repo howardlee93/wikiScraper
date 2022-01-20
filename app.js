@@ -1,71 +1,25 @@
-const puppeteer = require('puppeteer');
-const readline = require('readline');
-var fs = require('fs');
+const express = require('express');
+const cors = require('cors');
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
+const app = express();
+const port = process.env.PORT || 5000;
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.listen(port, () => {
+    console.log(`Server is running on port: ${port}`);
 });
 
-rl.question('What is the term you want to scrape ', (searchTerm) => {
-    // TODO: Log the answer in a database
-    // console.log(`you are searching for : ${searchTerm}`);
-    // term = searchTerm;
-    search(searchTerm);
-    rl.close();
-});
+app.get("/", (req,res) => res.send("Hello, this is the page"))
 
+app.post("/api/:term" , (req, res) =>
+    // res.send(req.params.term)
+    res.send("hi")
+)
 
-const search = async (term) => {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    // await page.goto('https://en.wikipedia.org/wiki/Operation_Grapple', {waitUntil : 'domcontentloaded'});
-    // await page.goto('https://en.wikipedia.org/wiki/Cimoliopterus', {waitUntil : 'domcontentloaded'});
-
-    await page.goto(`https://en.wikipedia.org/wiki/${term}`, {waitUntil : 'domcontentloaded'});
-
-    const imageBox = await page.$eval('#mw-content-text > div.mw-parser-output > table.infobox > tbody > tr:nth-child(2) > td > a > img',
-        el =>  el.getAttribute('src')
-    );
-
-    const info =  await page.$$eval('#mw-content-text > div.mw-parser-output > table.infobox > tbody tr', table => {
-        // let tableRow =[];
-        // for (let i = 1; i <table.length; i++){
-        //     tableRow.push(table[i]);
-        // }
-        // return tableRow;
-
-        return table[2].innerText;
-    });
-
-    console.log("image", imageBox);
-
-    console.log("info", info);
-
-   await page.pdf({ path: `res/${term}.pdf`, format: 'a4' });
-
-    await browser.close();
-};
-
-
-const htmlBuilder = ()=>{
-    var header = '';
-    var body = '';
-
-}
-
-
-// const main = async () =>{
-//     rl.question('What is the term you want to scrape ', (searchTerm) => {
-//         // TODO: Log the answer in a database
-//         console.log(`you are searching for : ${searchTerm}`);
-//         // return searchTerm;
-//         search(searchTerm);
-//         rl.close();
-//     });
-
-// }
-
-// main();
-
-
+// app.post('/', function (req, res) {
+//     res.send('POST request to the homepage')
+//   })
+  
