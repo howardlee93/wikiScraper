@@ -1,16 +1,16 @@
 const puppeteer = require('puppeteer');
-const readline = require('readline');
+// const readline = require('readline');
 var fs = require('fs');
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
 
-rl.question('What is the term you want to scrape ', (searchTerm) => {
-    search(searchTerm);
-    rl.close();
-});
+// rl.question('What is the term you want to scrape ', (searchTerm) => {
+//     search(searchTerm);
+//     rl.close();
+// });
 
 
 const search = async (term) => {
@@ -40,6 +40,9 @@ const search = async (term) => {
     console.log("info", info);
 
    await page.pdf({ path: `res/${term}.pdf`, format: 'a4' });
-
-    await browser.close();
+   await browser.close();
+   return imageBox;
 };
+
+
+module.exports = { search };
