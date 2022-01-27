@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const scrape = require('./scrape');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -15,11 +16,7 @@ app.listen(port, () => {
 app.get("/", (req,res) => res.send("Hello, this is the page"))
 
 app.post("/api/:term" , (req, res) =>
-    // res.send(req.params.term)
-    res.send("hi")
-)
 
-// app.post('/', function (req, res) {
-//     res.send('POST request to the homepage')
-//   })
-  
+    res.send(req.params.term)
+
+)

@@ -43,26 +43,3 @@ const search = async (term) => {
 
     await browser.close();
 };
-
-
-const htmlBuilder = ()=>{
-    var header = '';
-    var body = '';
-
-}
-
-
-// const main = async () =>{
-//     rl.question('What is the term you want to scrape ', (searchTerm) => {
-//         // TODO: Log the answer in a database
-//         console.log(`you are searching for : ${searchTerm}`);
-//         // return searchTerm;
-//         search(searchTerm);
-//         rl.close();
-//     });
-
-// }
-
-// main();
-
-
