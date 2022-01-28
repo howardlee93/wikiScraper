@@ -1,5 +1,12 @@
 <script>
 	export let searchTerm;
+	let baseURL = 'http://localhost:5000/api/';
+	
+	fetch(url,{
+		method:'POST'
+	});
+
+
 </script>
 
 <main>
