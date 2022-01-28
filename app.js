@@ -17,7 +17,7 @@ app.get("/", (req,res) => res.send("Hello, this is the page"))
 
 app.post("/api/:term" , (req, res) =>
     scrape.search(req.params.term)
-    .then ((data)=> res.send(data))
+    .then ((data)=> res.json(data))
     // res.send(req.params.term)
 
 )

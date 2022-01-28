@@ -39,7 +39,7 @@ const search = async (term) => {
 
     console.log("info", info);
 
-   await page.pdf({ path: `res/${term}.pdf`, format: 'a4' });
+//    await page.pdf({ path: `res/${term}.pdf`, format: 'a4' });
    await browser.close();
    return imageBox;
 };
