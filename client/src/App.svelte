@@ -1,16 +1,11 @@
 <script>
-	let searchTerm ='';
+	let searchTerm = '';
 	let imageSrc = '//upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Cat_poster_1.jpg/260px-Cat_poster_1.jpg';
+	let pdfSrc = '';
 	let baseURL = 'http://localhost:5000/api/';
 
 	async function handleSubmit(){
 		console.log(`api/${searchTerm}`);
-
-		// fetch(`${baseURL}${searchTerm}`,{
-		// 	method: 'POST'
-		// })
-		// .then(res => res.json())
-		// .then(resJson => imageSrc = resJson );
 
 		const res = await fetch(`${baseURL}${searchTerm}`,{
 			method: 'POST'
@@ -21,9 +16,6 @@
 	}
 
 
-
-
-
 </script>
 
 <main>
@@ -31,9 +23,9 @@
 	<input bind:value={searchTerm}  on:change={handleSubmit}
 	/>
 	<p></p>
-	<img src="//upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Cat_poster_1.jpg/260px-Cat_poster_1.jpg" alt="wiki-image"/>
-	<p></p>
 	<img src={imageSrc} alt="wiki-image"/>
+	<p></p>
+	<!-- <iframe src={pdfSrc}/> -->
 
 </main>
 
