@@ -1,10 +1,13 @@
 <script>
-	export let name;
+	export let searchTerm;
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h1>Wikipedia search wrapper</h1>
+	<input bind:value={$searchTerm} />
+	<p></p>
+	<img src="//upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Cat_poster_1.jpg/260px-Cat_poster_1.jpg" alt="wiki-image"/>
+	<iframe src="../../res/cat.pdf"></iframe>
 </main>
 
 <style>
