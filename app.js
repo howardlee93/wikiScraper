@@ -1,5 +1,8 @@
 const express = require('express');
 const cors = require('cors');
+const fs = require('fs');
+const scrape = require('./scrape.js');
+
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -14,12 +17,9 @@ app.listen(port, () => {
 
 app.get("/", (req,res) => res.send("Hello, this is the page"))
 
-app.post("/api/:term" , (req, res) =>
-    // res.send(req.params.term)
-    res.send("hi")
-)
+app.post("/api/:term" , (req, res) => {
+    scrape.search(req.params.term)
+    .then ((data)=> res.json(data))
+    // .then(() =>  res.sendFile(__dirname + `/res/${req.params.term}.pdf`)
+})
 
-// app.post('/', function (req, res) {
-//     res.send('POST request to the homepage')
-//   })
-  

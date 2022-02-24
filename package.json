@@ -4,7 +4,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "client": "cd client %% npm run dev"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +16,8 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "puppeteer": "^11.0.0"
+    "nodemon": "^2.0.15",
+    "npm": "^8.4.0",
+    "puppeteer": "^13.1.2"
   }
 }
